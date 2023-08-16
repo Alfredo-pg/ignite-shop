@@ -1,17 +1,25 @@
 import type { AppProps } from 'next/app'
+import { globalStyles } from '@/styles/global'
 import { Roboto } from 'next/font/google'
+
+import logoImg from '../assets/logo.svg'
+import Image from 'next/image'
+import { Container, Header } from '@/styles/pages/app'
 
 const roboto = Roboto({
   weight: ['400', '700'],
   subsets: ['latin'],
 })
+globalStyles();
 
-function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={roboto.className}>
+    <Container className={roboto.className}>
+      <Header>
+        <Image src={logoImg} alt="" />
+      </Header>
+
       <Component {...pageProps} />
-    </main>
+    </Container>
   )
 }
-
-export default App
